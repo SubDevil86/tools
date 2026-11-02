@@ -3,186 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT-Support Download-Hub | rjohann.de</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>IT-Support Download-Hub</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --secondary: #334155;
+            --secondary-hover: #475569;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
         }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .btn-hover-effect {
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .header {
+            text-align: center;
+            margin-bottom: 1.5rem;
         }
-        .btn-hover-effect:hover {
-            transform: translateY(-2px);
+
+        .icon-badge {
+            width: 48px;
+            height: 48px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            width: 100%;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #fbbf24;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-icon {
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .btn-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .btn-desc {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .btn-secondary .btn-desc {
+            color: var(--text-muted);
+        }
+
+        .fee-container {
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+        }
+
+        .fee-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 220px;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+        .footer {
+            margin-top: 1.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.75rem;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 9999px;
+            margin-bottom: 0.5rem;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: #10b981;
+            border-radius: 50%;
         }
     </style>
 </head>
-<body class="text-slate-200 flex flex-col justify-between p-4 sm:p-6 md:p-8">
+<body>
 
-    <div class="max-w-2xl mx-auto w-full my-auto">
-        
-        <!-- Header -->
-        <header class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-600/20 text-blue-400 mb-4 border border-blue-500/30 shadow-lg shadow-blue-500/10">
-                <i class="fa-solid fa-toolbox text-2xl"></i>
+    <div class="container">
+        <div class="header">
+            <div class="icon-badge">💼</div>
+            <h1>IT-Support Download-Hub</h1>
+            <p class="subtitle">Geschützter Techniker-Bereich & Remote Tools</p>
+        </div>
+
+        <div class="card">
+            <div class="section-title">
+                <span>★</span> HAUPT-ZUGRIFFE
             </div>
-            <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">IT-Support Download-Hub</h1>
-            <p class="text-slate-400 text-sm sm:text-base mt-1 font-medium">Geschützter Techniker-Bereich & Remote Tools</p>
-        </header>
 
-        <!-- Main Card Container -->
-        <main class="glass-card rounded-2xl p-5 sm:p-8 shadow-2xl space-y-6">
-            
-            <!-- Primary Action Buttons -->
-            <section class="space-y-3">
-                <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2 px-1">
-                    <i class="fa-solid fa-star text-amber-400 mr-1.5"></i> Haupt-Zugriffe
-                </h2>
-                
-                <!-- Fernwartung Button -->
-                <a href="https://daten.hwv-med.de/HWV_Fernwartung.exe" 
-                   class="btn-hover-effect flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold shadow-lg shadow-blue-600/20 group">
-                    <div class="flex items-center space-x-3.5">
-                        <div class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-lg">
-                            💻
-                        </div>
-                        <div class="text-left">
-                            <div class="text-base font-bold leading-tight">HWV Fernwartung starten</div>
-                            <div class="text-xs text-blue-100/80 font-normal">Direkter Exe-Download (QuickSupport)</div>
+            <div class="btn-group">
+                <!-- Direct Exe Download -->
+                <a href="https://daten.hwv-med.de/HWV_Fernwartung.exe" class="btn btn-primary">
+                    <div class="btn-left">
+                        <span class="btn-icon">💻</span>
+                        <div class="btn-text">
+                            <span class="btn-title">HWV Fernwartung starten</span>
+                            <span class="btn-desc">Direkter Exe-Download (QuickSupport)</span>
                         </div>
                     </div>
-                    <i class="fa-solid fa-download text-lg group-hover:translate-x-0.5 transition-transform"></i>
+                    <span>⬇</span>
                 </a>
 
-                <!-- HiDrive Technik-Ordner Button -->
-                <a href="https://my.hidrive.com/share/zb6mf0seqe" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   class="btn-hover-effect flex items-center justify-between p-4 rounded-xl bg-slate-800/90 hover:bg-slate-700/90 border border-slate-700 text-white font-semibold group">
-                    <div class="flex items-center space-x-3.5">
-                        <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg border border-amber-500/20">
-                            📁
-                        </div>
-                        <div class="text-left">
-                            <div class="text-base font-bold leading-tight">Technik Ordner (HiDrive)</div>
-                            <div class="text-xs text-slate-400 font-normal">Freigegebenes Cloud-Archiv öffnen</div>
+                <!-- HiDrive Share Link -->
+                <a href="https://my.hidrive.com/share/zb6mf0seqe" target="_blank" class="btn btn-secondary">
+                    <div class="btn-left">
+                        <span class="btn-icon">📁</span>
+                        <div class="btn-text">
+                            <span class="btn-title">Technik Ordner (HiDrive)</span>
+                            <span class="btn-desc">Freigegebenes Cloud-Archiv öffnen</span>
                         </div>
                     </div>
-                    <i class="fa-solid fa-arrow-up-right-from-square text-slate-400 group-hover:text-white transition-colors"></i>
+                    <span>↗</span>
                 </a>
-            </section>
-
-            <hr class="border-slate-700/60 my-4">
-
-            <!-- Search & Quick Filter -->
-            <section class="space-y-3">
-                <div class="flex items-center justify-between px-1">
-                    <h2 class="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                        <i class="fa-solid fa-magnifying-glass text-slate-400 mr-1.5"></i> Schnellsuch-Filter
-                    </h2>
-                    <span class="text-xs text-slate-500" id="tool-count">3 Fast-Links</span>
-                </div>
-
-                <div class="relative">
-                    <input type="text" 
-                           id="search-input" 
-                           placeholder="Tool oder Kategorie suchen..." 
-                           class="w-full bg-slate-900/60 border border-slate-700 rounded-xl py-2.5 pl-10 pr-4 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
-                    <i class="fa-solid fa-search absolute left-3.5 top-3.5 text-slate-500 text-sm"></i>
-                </div>
-
-                <!-- Secondary Quick Links list -->
-                <div class="space-y-2 mt-3" id="tools-list">
-                    
-                    <!-- HiDrive Login Link -->
-                    <a href="https://my.hidrive.com" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       data-keywords="hidrive login cloud strato admin speicher"
-                       class="tool-item btn-hover-effect flex items-center justify-between p-3 rounded-lg bg-slate-800/40 hover:bg-slate-800 border border-slate-700/50 text-slate-300 hover:text-white text-sm transition-colors">
-                        <div class="flex items-center space-x-3">
-                            <span class="text-base">🔐</span>
-                            <span class="font-medium">HiDrive Direkt-Login</span>
-                        </div>
-                        <span class="text-xs text-slate-500 font-mono">my.hidrive.com</span>
-                    </a>
-
-                    <!-- Schnellzugriff Netzwerkanalyse -->
-                    <a href="https://my.hidrive.com/share/zb6mf0seqe" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       data-keywords="netzwerk diagnose ping ip tools treiber"
-                       class="tool-item btn-hover-effect flex items-center justify-between p-3 rounded-lg bg-slate-800/40 hover:bg-slate-800 border border-slate-700/50 text-slate-300 hover:text-white text-sm transition-colors">
-                        <div class="flex items-center space-x-3">
-                            <span class="text-base">🛠️</span>
-                            <span class="font-medium">Diagnose & Treiber (via Ordner)</span>
-                        </div>
-                        <span class="text-xs text-slate-500 font-mono">HiDrive Share</span>
-                    </a>
-
-                    <!-- Fernwartung Alt-Option -->
-                    <a href="https://daten.hwv-med.de/HWV_Fernwartung.exe" 
-                       data-keywords="fernwartung support helpdesk quicksupportexe"
-                       class="tool-item btn-hover-effect flex items-center justify-between p-3 rounded-lg bg-slate-800/40 hover:bg-slate-800 border border-slate-700/50 text-slate-300 hover:text-white text-sm transition-colors">
-                        <div class="flex items-center space-x-3">
-                            <span class="text-base">🚀</span>
-                            <span class="font-medium">HWV Fernwartung (.exe Direkt-Link)</span>
-                        </div>
-                        <span class="text-xs text-slate-500 font-mono">hwv-med.de</span>
-                    </a>
-
-                </div>
-            </section>
-
-        </main>
-
-        <!-- Footer / Status indicator -->
-        <footer class="mt-8 text-center space-y-2">
-            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/50 text-xs text-slate-400">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>System bereit</span>
-                <span class="text-slate-600">|</span>
-                <span class="font-mono text-slate-300">rjohann.de Support Hub</span>
             </div>
-            <p class="text-xs text-slate-500">Nur für autorisierte Nutzung im IT-Kundendienst.</p>
-        </footer>
 
+            <!-- HWV Fee Bildbereich -->
+            <div class="fee-container">
+                <img src="fee.png" alt="HWV Fee" class="fee-image">
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="status-badge">
+                <span class="dot"></span>
+                <span>System bereit | rjohann.de Support Hub</span>
+            </div>
+            <p>Nur für autorisierte Nutzung im IT-Kundendienst.</p>
+        </div>
     </div>
 
-    <!-- Interactive Filtering JS -->
-    <script>
-        const searchInput = document.getElementById('search-input');
-        const toolItems = document.querySelectorAll('.tool-item');
-        const toolCount = document.getElementById('tool-count');
-
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            let visibleCount = 0;
-
-            toolItems.forEach(item => {
-                const keywords = item.getAttribute('data-keywords').toLowerCase();
-                const text = item.textContent.toLowerCase();
-
-                if (keywords.includes(query) || text.includes(query)) {
-                    item.style.display = 'flex';
-                    visibleCount++;
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-
-            toolCount.textContent = `${visibleCount} Treffer`;
-        });
-    </script>
 </body>
 </html>
